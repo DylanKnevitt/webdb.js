@@ -1,0 +1,116 @@
+<!-- 
+	Creted By: Divan Visagie
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Web SQL Query Browser</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<!-- Bootstrap + font-awesome -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+		<script src="javascript/knockout.min.js"></script>
+
+		<!-- CodeMirror -->
+		<link rel="stylesheet" href="codemirror/lib/codemirror.css" />
+		<link rel="stylesheet" href="css/solarized.css" /> <!-- Solarized theme -->
+
+		<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+		<!-- Stuff for tree views -->
+		<link href="css/tree.css" rel="stylesheet" />
+
+	</head>
+	<body>
+
+		<!-- Create Navbar as first layout row-->
+		<div class="navbar navbar-inverse row">
+			<div class="navbar-inner">
+				<div class="btn-group">
+					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+						File
+						<span class="icon-file"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<!-- dropdown menu links -->
+						<li id="file-open"><a tabindex="-1" href="#">Open</a></li>
+					</ul>
+				</div>
+
+
+				<!-- <div class="brand">Web SQL Query Browser</div> -->
+				<button id="run" class="btn btn-inverse pull-right">Run  &nbsp;<div style="color: rgb(50, 207, 50); text-shadow: 0px 0px 9px rgb(79, 201, 79);" class="icon-play"></div>  </button>
+			</div>
+		</div>
+
+		<div class="row show-grid hfill">
+			<div id="sidebar" class="side span" >
+
+				<div class="navbar" >
+					<div class="navbar-inner">
+						<div class="navbar-form ">
+							<div class="">
+								<input style="width:auto; min-width: 30px; max-width: 40%;" class="" id="dbName" type="text" placeholder="Database name" value="myDb"/>
+								<button class="btn" id="dbNameButton">Select</button>
+								<button class="btn" id="dbRefresh">  <div class="icon-refresh"></div> </button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div id="tree" class="tree" ></div>
+				</div>
+			</div>
+			<div class="code span row">
+				<textarea id="code" name="code" style="display: none; height:100%;">
+DROP TABLE IF EXISTS test;
+CREATE TABLE IF NOT EXISTS test( id INTEGER PRIMARY KEY, name TEXT, surname TEXT , email TEXT );
+
+INSERT INTO test VALUES( 1 , "John" , "Smith" , "john@smith.com" );
+INSERT INTO test VALUES( 2 , "Jack" , "Carver" , "jackc@farcry.de" );
+INSERT INTO test VALUES( 3 , "James" , "May" , "may@manlab.com" );
+INSERT INTO test VALUES( 4 , "Richard" , "Hammond" , "ham@cheese.co.uk" );
+
+SELECT * FROM test;
+
+SELECT * FROM test WHERE id = 1;</textarea>
+			</div>
+
+			<div id="output" class="output span row">
+
+				<ul class="nav nav-tabs" id="outputTab" data-bind="foreach : tables">
+					<li>
+						<a data-bind="attr : { href : tabidHash , class:tabClass }"> <span data-bind="text:title"></span><button class="optcb icon-remove-sign"></button> </a>
+
+					</li>
+				</ul>
+				 
+				<div id="outputTabContent" class="tab-content" data-bind="foreach: tables">
+					<div class="tab-pane" data-bind="attr : { id : tabid }" >
+						<table class="table" data-bind="attr : { id: id , class: className }">
+							<thead>
+								<tr data-bind="foreach: headings">
+									<th data-bind="text:$data"></th>
+								</tr>
+							</thead>
+							<tbody data-bind="foreach: rows">
+								<tr data-bind="foreach: values , attr : { class : className }">
+									<td data-bind="text: $data"></td>
+								</tr>
+							<tbody>
+					  	</table>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!--  require js -->
+		<script data-main="javascript/main" src="javascript/require.js"></script>
+	</body>
+</html>

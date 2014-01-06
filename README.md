@@ -1,16 +1,27 @@
-webdb.js
-========
+# webdb
 
-webdb.js is a web interface for web sql based on a core that can also be used as a devtools script
+The best project ever, restarted.
 
-NOTE: This is a prototype
+## Getting Started
+Install the module with: `npm install webdb`
 
+```javascript
+var webdb = require('webdb');
+webdb.awesome(); // "awesome"
+```
 
-### Running
+## Documentation
+_(Coming soon)_
 
-Note that when running the web interface , the code will need to be run on a webserver if you want file opening functionality.
+## Examples
+_(Coming soon)_
 
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-### Browser support
+## Release History
+_(Nothing yet)_
 
-So far all development is being done in Google Chrome as there is an intention to make it a Chrome extension.
+## License
+Copyright (c) 2014   
+Licensed under the MIT license.
