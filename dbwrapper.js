@@ -10,4 +10,4 @@ function runQuery(query, driver) {
 
 }
 
-console.log(runQuery("Select * from sqlite_master", "sqlite3"));
+//console.log(runQuery("Select * from sqlite_master", "sqlite3"));
