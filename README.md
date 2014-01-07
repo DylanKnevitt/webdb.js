@@ -1,14 +1,15 @@
 # webdb
 
-The best project ever, restarted.
+A browser based query browser for multiple Query Languages. (This is a prototype)
 
-## Getting Started
-Install the module with: `npm install webdb`
+Supported Query Languages:
+Sql Lite
 
-```javascript
-var webdb = require('webdb');
-webdb.awesome(); // "awesome"
-```
+To be supported:
+MongoDB
+T-SQL
+MySQL
+
 
 ## Documentation
 _(Coming soon)_
