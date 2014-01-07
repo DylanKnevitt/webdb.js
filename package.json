@@ -3,7 +3,7 @@
   "description": "The best project ever, restarted.",
   "version": "0.2.0",
   "homepage": "https://github.com/dylank/webdb.js",
-  "author": {},
+  "author": "",
   "repository": {
     "type": "git",
     "url": "git://github.com/dylank/webdb.js.git"
@@ -22,7 +22,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt nodeunit",
+    "start": "node server.js"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
@@ -30,5 +31,13 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.2"
   },
-  "keywords": []
+  "keywords": [],
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "sqlite3": "~2.1.19",
+    "express": "~3.4.7"
+  },
+  "license": "MIT"
 }
