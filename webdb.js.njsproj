@@ -16,7 +16,6 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Content Include="dbwrapper.txt" />
     <Content Include="node_modules\.bin\express" />
     <Content Include="node_modules\.bin\express.cmd" />
     <Content Include="node_modules\express\.npmignore" />
@@ -339,7 +338,6 @@
     <Content Include="node_modules\sqlite3\test\support\script.sql" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Compile Include="dbconnect.js" />
     <Compile Include="dbwrapper.js" />
     <Compile Include="Gruntfile.js" />
     <Compile Include="node_modules\express\index.js" />
