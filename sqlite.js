@@ -1,12 +1,15 @@
+
+/*function dbInit(dbName,mode) {
+*sqlite3 = require('sqlite3').verbose(); //.verbose produces long stack traces
+*db = new sqlite3.Database(dbName,mode);   
+}*/
+
 sqlite3 = require('sqlite3').verbose(); //.verbose produces long stack traces
-db = new sqlite3.Database('c:/Chinook_Sqlite.sqlite'); 
+db = new sqlite3.Database('c:/Chinook_Sqlite.sqlite');   
 /*sqlite3.Database(filename, [mode], [callback])
 * Filename ":memory:" an anonymous in-memory database will be used. An empty string will use an anonymous disk-based database. Otherwise filename
 * Mode sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE
 */
-
-
-
 //Database.serialize([callback]) Puts the execution mode into serialized. This means that at most one statement object can execute a query at a time. Other statements wait in a queue until the previous statements executed.
 //Database.parallelize([callback]) Puts the execution mode into parallelized. This means that queries scheduled will be run in parallel.
 //Database.run(sql, [param, ...], [callback]) executes SQL statement but does not return results
@@ -24,8 +27,11 @@ db = new sqlite3.Database('c:/Chinook_Sqlite.sqlite');
 
 function runQuery(sql) {
   //Single row operation
-  db.get(sql, function(err, row) {
-  return row;
+  var sqlQuery = sql;
+  sqlQuery = sqlQuery.splice
+
+  db.each(sql, function(err, rows) {
+  return rows;
   });
 };
 
@@ -114,3 +120,4 @@ function decipherTableStructure(sql)
 exports.runQuery = runQuery;
 exports.getTableStructure = getTableStructure;
 exports.decipherTableStructure = decipherTableStructure;
+//exports.dbInit = dbInit;
