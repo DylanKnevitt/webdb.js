@@ -28,14 +28,12 @@ db = new sqlite3.Database('c:/Chinook_Sqlite.sqlite');
 function runQuery(sql) {
   //Single row operation
   var sqlQuery = sql;
-  sqlQuery = sqlQuery.splice
-
   db.each(sql, function(err, rows) {
   return rows;
   });
 };
 
-function getTableStructure() {
+function getTableStructure(callback) {
   var rows = [];
   var tableDefs = []; //Need to return this at some point
   db.serialize(function() {
@@ -51,6 +49,18 @@ function getTableStructure() {
 	});
   });
 };
+
+webdb.getSchema = function( callback ){ /* Get list of all items in sqlite master */
+
+
+    webdb.executeTransaction( 'SELECT tbl_name AS tableName, type FROM sqlite_master' , [] , function( resultSet ){
+
+        if ( callback && typeof callback === 'function' )
+            callback( resultSet );
+    } );
+};
+
+
 
 function decipherTableStructure(sql)
 {
