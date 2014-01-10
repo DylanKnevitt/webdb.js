@@ -7,6 +7,8 @@ function runQuery(query, driver) {
       break;
     case "TSQL":
       break;
+    case "webdb":
+      var db.require('./webdb')
     default:
       break;
   }
